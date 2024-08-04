@@ -1,0 +1,29 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Categories
+{% endblock %}
+
+
+{% block content %}
+<section class="jobs_list_header">
+
+</section>
+
+<div class="maincatserach"><div class="category-left"><h1>All Categories</h1></div><div class="category-below"><p>Looking for Open Job Opportunities? <span>Find Jobs </span></p></div><div class="divi"></div><div class="job-search"><img alt="Plus" fetchpriority="high" width="20" height="20" decoding="async" data-nimg="1" class="imageplus" src="{% static 'images/other/search.svg' %}" style="color: transparent;"><input type="text" placeholder="Search by Categories" value=""><button>Search</button></div></div>
+
+<section class="jobs_list">
+    <div class="jobs_cards">
+        {% for category in categories %}
+            <div class="cadi">
+                <div style="background-image: url({{ category.image.url }}); background-size: cover; background-position: center; height: 250px; border-radius: 1rem;" class=""></div>
+                <div class="rowa">
+                    <h3>{{ category.name }}</h3>   
+                <a href="{% url 'categories_detail' category.id %}"><button>View Details</button></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

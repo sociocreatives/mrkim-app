@@ -1,0 +1,59 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block content %}
+    <section class='outer'>
+        <section class="hero-section" >
+            <div class="hero-content">
+                <div class="hero-left">
+                <div class='location_piece'>
+                <img src="{% static 'images/SVG/location.svg' %}" width="30px" alt="location" priority class="location" />
+                    <p id="location"></p>
+                </div> 
+                    <h1 class="hero-title">Get the right local pro in your area for any project.</h1>
+                    <div class='heroinput'>
+                        <form class='heroinput' method="POST" action="">
+                            {% csrf_token %}
+                            <input type="text" placeholder='Search by Category' name="searched"/>
+                            <button >Search</button>
+                        </form>
+                    </div>
+                        <p>We have the best SKILLS and custom services for your PROJECT <span>Go Premium</span> </p>
+                </div>
+                <div class="hero-right">
+                    
+                </div>
+            </div>
+        </section>
+
+        {% comment %} Categories Section {% endcomment %}
+        <section class='catgeories'>
+            <div class="category-content">
+              <div class="category-left">
+                  <h1>Get Services</h1>
+                  <Link href="/categories"><p>See All</p></Link>
+              </div>
+              <div class="category-below">
+                  <p>Looking for Open Job Opportunities? <span><Link href="/jobs">View Jobs </Link></span></p>
+              </div>
+            </div>
+          <div class="category-typesone">
+            <section class="scrollviews">
+                {% for obj in categories %}
+                <div data-aos="fade-up"><Link href="/categories/automobile"><div class='cats' data-aos="zoom-in" style="background-image: url({{ obj.image.url }}); background-size: cover; background-position: center">
+                    <p class='cat-text'>{{ obj.name }} <span>50+</span></p></div></Link>
+                </div>
+                {% endfor %}
+            </section>
+          </div>
+
+          
+        </section>
+        
+    </section>
+{% endblock %}

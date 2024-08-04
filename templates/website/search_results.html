@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+
+{% block content %}
+
+        {% comment %} Categories Section {% endcomment %}
+        <div style="margin-top: 80px;">
+        <section class='catgeories'>
+            <div class="category-content">
+             
+              {% comment %} <div class="category-below">
+                  <p>Looking for Open Job Opportunities? <span><Link href="/jobs">View Jobs </Link></span></p>
+              </div> {% endcomment %}
+            </div>
+            
+            <div class='heroinput'>
+                        <form class='heroinput' method="POST" action="{% url 'search_results' %}">
+                            {% csrf_token %}
+                            <input type="text" placeholder='Search by Category' name="searched"/>
+                            <button >Search</button>
+                        </form>
+                    </div>
+             <div class="category-left">
+                  <h1>Search Results</h1>
+                 
+              </div>
+
+          <div class="category-typesone">
+            {% if searched %}
+            <h1>You Searched For {{ searched }}</h1>
+            dsgsgfsdg
+                {% for categor in category_name %}
+                    <p>{{ categor}}</p>
+                    sdfsdgfsdg
+                {% endfor %}
+            {% else %}
+            <h1>You Did not put in a search parameter</h1>
+            {% endif %}
+          </div>
+
+          
+        </section>
+        
+    </section>
+</div>
+{% endblock %}

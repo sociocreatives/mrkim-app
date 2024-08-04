@@ -1,0 +1,48 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+
+{% block content %}
+
+    <div>
+        <div class="aboutimage" >
+            <img src="{% static 'images/about-header.jpeg' %}" width="100%" style="margin-top: 80px;"/>
+            </div>
+                <div class="category-section">
+                <div class="category-content" data-aos="fade-up">
+                    <div class="category-left">
+                        <h1>Profile</h1>
+                      <div class="plus"><p>Make Request  
+                          <img src="{% static 'images/plus2.svg' %}" width='10px' alt="Plus" priority className="imageplus"/></p>
+                      </div>
+                </div>
+                <div className="category-below">
+                    <p>Looking for Open Job Opportunities? <span><a href="">Find Jobs</a> </span></p>
+                </div>
+            </div> 
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}</p>
+  {% else %}
+    <p>You are not logged in.</p>
+  {% endif %}
+    {% if user.is_authenticated %}
+    {% for person in user_profile %}
+        <div>
+            <div class='catsa' style="background-image: url({{ person.profile_photo.url }}); background-size: cover; background-position: center; height:100px; width:100px;"></div>
+           <p class='cat-text'>{{ user.name }}</p>
+        </div>
+    {% endfor %}
+    {% else %}   
+       <Link href="/premium" >Login</Link>
+    {% endif %}
+{% endblock %}
+
+
+                                 
+                                 

@@ -1,0 +1,27 @@
+{% extends 'partials/auth.html'%}
+{% load static %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+    {% if messages %}
+    {% for message in messages %}
+         {{ message }}
+    {% endfor %}
+    {% endif %}
+    Job Seeker
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="username" name="username"/>
+        <input type="email" placeholder="email" name="email"/>
+        <input type="password" placeholder="password" name="password1"/>
+        <input type="password" placeholder="password" name="password2"/>
+        <button type="submit" value="Register">SUBMIT</button>
+    </form>
+</div>
+{% endblock %}

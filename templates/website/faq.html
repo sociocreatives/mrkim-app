@@ -1,0 +1,40 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+<p>sfczfsafsafsdf sdfsdf sdfs gsd gsg gd</p>
+
+{% block content %}
+<section class="faq_list_header">
+
+</section>
+<div class="faqse">
+
+<ul>
+    {% for faq in faqs %}
+        <li>
+           <div class="faqtitle"> <strong >{{ faq.title }}</strong></div>
+            {% for header in faq.faqheaders.all %}
+            <div class="accordion-container">                
+                <!-- Accordion Section 1 -->
+                <div class="accordion-item">
+                    
+                    <button class="accordion-header">{{ header.title }} <p>+</p></button>
+                    <div class="accordion-content">
+                        <p>{{ header.body|safe  }}</p>
+                    </div>
+                   
+                </div>
+            </div>
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul>
+</div>
+
+
+{% endblock %}

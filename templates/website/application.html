@@ -1,0 +1,52 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Job Application
+{% endblock %}
+
+
+{% block content %}
+
+<div class="maincatserach">
+    <div class="category-left">
+        <h1>{{ category.name }}</h1>
+        <a href="{% url 'categories' %}">
+            <p> Go Back</p>
+        </a>
+    </div>
+    <div class="category-below">
+        <p>Looking for Open Job Opportunities? <span><a href="{% url 'jobs' %}"> Find Jobs </a> </span></p>
+    </div>
+    <div class="divi"></div>
+    <div class="job-search">
+        <img alt="Plus" fetchpriority="high" width="20" height="20" decoding="async" data-nimg="1" class="imageplus" src="{% static 'images/other/search.svg' %}" style="color: transparent;"><input type="text" placeholder="Search by Categories" value=""><button>Search</button></div></div>
+
+<section class="jobs_list">
+    {% if user.is_authenticated %}
+    {% comment %} <form class="apply_jobs">
+    <input type="text" value="{{ user.username }}" name="username" disabled />
+    </form> {% endcomment %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Recruiter</label>
+        <div class="inputing">
+            
+            {{form.recruiter}}</div>
+        <div class="inputing">{{form.title}}</div>
+        <input type="text" value="{{ user.username }}" name="username" disabled />
+        <input type="text" placeholder="title" name="title"/>
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <button type="submit">Submit</button>
+    </form>
+  {% else %}
+    <p>You are not logged in.</p>
+  {% endif %}
+
+   
+
+</section>
+
+{% endblock %}
+
+

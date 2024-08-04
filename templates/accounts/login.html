@@ -1,0 +1,46 @@
+{% extends 'partials/auth.html' %}
+{% load static %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+  <div class="section_ones">
+    <div class="login_section">
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="..." class="rounded me-2" alt="..." />
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            {% if messages %}
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="contenti">
+        <a href="{% url 'home' %}"><img src="{% static 'images/mrkimicon.svg' %}" width="120px" alt="mr. kim logo" priority class="imagelogo" /></a>
+        <h2>Welcome to Mr Kim</h2>
+        <p>Login to Get Professional Services from your Location</p>
+        <form method="POST" class="form_login">
+          {% csrf_token %}
+          <input type="email" placeholder="email" name="email" />
+          <input type="password" placeholder="password" name="password" />
+          {% comment %} <button type="submit" value="Register" id="liveToastBtn">SUBMIT</button> {% endcomment %}
+          <label class="cheka">
+            <input type="checkbox" id="activateCheckbox" class="chekboing"/>
+            Agree to terms and conditions
+        </label>
+        <button id="actionButton" disabled class="chekbutton" type="submit"  >Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

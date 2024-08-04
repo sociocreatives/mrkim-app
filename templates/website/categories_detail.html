@@ -1,0 +1,44 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Jobs
+{% endblock %}
+
+
+{% block content %}
+<section class="bodaheader" style="background-image: url({{ category.header_image.url }}); background-size: cover; background-position: center top; background-repeat: no-repeat; height: 350px; width: 100%; margin-bottom: 3rem; margin-top: 3rem;">
+    {% comment %} <img src="{{ category.header_image.url }}" alt="{{ category.name }}" width="100%"/> {% endcomment %}
+</section>
+<div class="goback"><a href="{% url 'categories' %}"><div class="gobackto"><p>GO BACK</p></div></a></div>
+
+<div class="maincatserach">
+    <div class="category-left">
+        <h1>{{ category.name }}</h1>
+        <a href="{% url 'categories' %}">
+            <p> Go Back</p>
+        </a>
+    </div>
+    <div class="category-below">
+        <p>Looking for Open Job Opportunities? <span><a href="{% url 'jobs' %}"> Find Jobs </a> </span></p>
+    </div>
+    <div class="divi"></div>
+    <div class="job-search">
+        <img alt="Plus" fetchpriority="high" width="20" height="20" decoding="async" data-nimg="1" class="imageplus" src="{% static 'images/other/search.svg' %}" style="color: transparent;"><input type="text" placeholder="Search by Categories" value=""><button>Search</button></div></div>
+
+<section class="jobs_list">
+    <ul>
+        {% for subcategory in subcategories %}
+        <a href="{% url 'application' %}"><li>{{ subcategory.name }}</li></a>
+            
+        {% empty %}
+            <li>No subcategories available.</li>
+        {% endfor %}
+    </ul>
+    <button id="showMoreBtn" class="show-more-btn">Show More</button>
+    {% comment %} <a href="{% url 'categories' %}">Back to all posts</a> {% endcomment %}
+</section>
+
+{% endblock %}
+
+

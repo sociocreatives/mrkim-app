@@ -1,0 +1,30 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Jobs
+{% endblock %}
+
+
+{% block content %}
+
+<section class="jobs_list_header">
+</section>
+
+<section class="jobs_list">
+    <div class="jobs_box">
+        <h1>{{ job.title }}</h1>
+        <p>{{ job.description }}</p>
+        
+        <ul>
+            {% for categories in job.category.all %}
+                <li><a href="">{{ categories.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="{% url 'jobs' %}">Back to all posts</a>
+</section>
+
+{% endblock %}
+
+

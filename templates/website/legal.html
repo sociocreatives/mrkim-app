@@ -1,0 +1,39 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Jobs
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+    <div class="lawimage" style={imageStyle}>
+        
+    </div>
+      <div class="category-section">
+          <div class="category-content" data-aos="fade-up">
+              <div class="category-left">
+                <h1>Our Legal Terms</h1>
+              </div>
+              <div class="category-below">
+                  <p>Effective: January, 2023</p>
+              </div>
+          </div>
+    </div>
+    <div class="legaltabs">
+        <div class="cardi">
+            {% for leg in legal %}
+            <div class="cada">
+            <img src="{% static 'images/services.png' %}"alt="legal" width="50px" class="stax"/>
+            <h4>{{ leg.title}}</h4>
+            <a href="{% url 'legal_detail' leg.id %}"><button>View Details</button></a>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+        </section>
+    </section>
+</div>
+{% endblock %}
