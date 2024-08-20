@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('website.urls')),
     path('jobs/', include('jobs.urls')),
     path('mpesa/', include(mpesa_urls)),
+    path('accounts/', include('allauth.urls')),  # Allauth routes
 ] 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

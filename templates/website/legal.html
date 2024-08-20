@@ -8,11 +8,9 @@
 
 {% block content %}
 
+<section class="lawimages"></section>  
 <div>
-    <div class="lawimage" style={imageStyle}>
-        
-    </div>
-      <div class="category-section">
+    <div class="category-section">
           <div class="category-content" data-aos="fade-up">
               <div class="category-left">
                 <h1>Our Legal Terms</h1>
@@ -25,15 +23,16 @@
     <div class="legaltabs">
         <div class="cardi">
             {% for leg in legal %}
+            <a href="{% url 'legal_detail' leg.id %}">
             <div class="cada">
-            <img src="{% static 'images/services.png' %}"alt="legal" width="50px" class="stax"/>
-            <h4>{{ leg.title}}</h4>
-            <a href="{% url 'legal_detail' leg.id %}"><button>View Details</button></a>
+                <div class="cadas">
+                    <img src="{% static 'images/services.png' %}"alt="legal" width="50px" class="stax"/>
+                    <h4>{{ leg.title}}</h4>
+                </div>
+            {% comment %} <button>View Details</button> {% endcomment %}
             </div>
+            </a>
             {% endfor %}
         </div>
-        </div>
-        </section>
-    </section>
-</div>
+    </div>
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Jobs
+{% endblock %}
+
+
+{% block content %}
+
+<section class="lawimages"></section>
+<div class="category-section">
+    <div class="category-content">
+        <div class="category-left">
+            <h1>Our Premium Services</h1>
+        </div><div class="category-below">
+            <div>
+                <p>Looking for Open Job Opportunities? <span><a href="/jobs">Find Jobs </a></span></p>
+            </div>
+            <div>
+                <a href="/booking">
+                    <h4 class="bookings">Book Now</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+     <div>
+        {% for premium in premiums %}
+        <a href="{% url 'premium_detail' premium.id %}">
+        <h4>{{ premium.name }}</h4>
+        </a>
+        {% endfor %}
+    </div>
+</a>
+
+{% endblock %}

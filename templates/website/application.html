@@ -29,15 +29,9 @@
     </form> {% endcomment %}
     <form method="post">
         {% csrf_token %}
-        <label>Recruiter</label>
-        <div class="inputing">
-            
-            {{form.recruiter}}</div>
-        <div class="inputing">{{form.title}}</div>
-        <input type="text" value="{{ user.username }}" name="username" disabled />
-        <input type="text" placeholder="title" name="title"/>
-        {% comment %} {{ form.as_p }} {% endcomment %}
-        <button type="submit">Submit</button>
+        {{ form.as_p}}
+
+
     </form>
   {% else %}
     <p>You are not logged in.</p>

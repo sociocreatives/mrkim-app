@@ -16,8 +16,9 @@
                 </div> 
                     <h1 class="hero-title">Get the right local pro in your area for any project.</h1>
                     <div class="heroinput">
-                        <form class='heroinput'>
-                            <input type="text" placeholder='Search by Category' name="searched"/>
+                        <form class='heroinput' method="get" action="{% url 'search_results' %}">
+                            {% csrf_token %}
+                            <input type="text" placeholder='Search by Category' name="query" value="{{ query }}"/>
                             <button >Search</button>
                         </form>
                     </div>

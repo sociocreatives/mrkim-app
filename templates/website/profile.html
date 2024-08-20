@@ -1,0 +1,48 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+
+{% block content %}
+
+
+        <div class="aboutimage" >
+            <img src="{% static 'images/about-header.jpeg' %}" width="100%" style="margin-top: 80px;"/>
+            </div>
+                
+            </div> 
+        </div>
+
+        <div class="maina">
+            {% if user.profile %}
+            <div class="profileimagearea"><img src="" width="150px" height="150px" class="profileimage"/></div>
+            <div class="sides">
+                <h2>My Bio</h2>
+            <p>{{ user.profile.profile_photo }}</p>
+                <p>{{ user.profile.bio }}</p>
+                <p>Location: {{ user.profile.location }}</p>
+            </div>
+            
+        </div>
+
+        <div class="mana">
+            <p>Applicable Skills:</p>
+            <p>{{ user.profile.applicable_skills_training }}</p>
+        </div>
+        {% endif %}
+  
+   
+   
+
+
+    <div class="roundi">
+
+    </div>
+{% endblock %}
+
+
+                                 
+                                 

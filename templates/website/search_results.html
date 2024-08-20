@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'partials/base.html'%}
 {% load static %}
 
 {% block title %}
@@ -19,11 +19,11 @@
             </div>
             
             <div class='heroinput'>
-                        <form class='heroinput' method="POST" action="{% url 'search_results' %}">
-                            {% csrf_token %}
-                            <input type="text" placeholder='Search by Category' name="searched"/>
-                            <button >Search</button>
-                        </form>
+                <form class='heroinput' method="get" action="{% url 'search_results' %}">
+                    {% csrf_token %}
+                    <input type="text" placeholder='Search by Category' name="query" value="{{ query }}"/>
+                    <button >Search</i></button>
+                </form>
                     </div>
              <div class="category-left">
                   <h1>Search Results</h1>
@@ -31,15 +31,14 @@
               </div>
 
           <div class="category-typesone">
-            {% if searched %}
-            <h1>You Searched For {{ searched }}</h1>
-            dsgsgfsdg
-                {% for categor in category_name %}
-                    <p>{{ categor}}</p>
-                    sdfsdgfsdg
-                {% endfor %}
+            {% if results %}
+        <ul>
+            {% for result in results %}
+                <li>{{ result.name }}</li>  <!-- Adjust based on your model's fields -->
+            {% endfor %}
+                </ul>
             {% else %}
-            <h1>You Did not put in a search parameter</h1>
+                <p>No results found.</p>
             {% endif %}
           </div>
 

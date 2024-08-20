@@ -82,3 +82,25 @@ class Legal(models.Model):
     
     def __str__(self):
         return self.title
+
+class PremiumTitles(models.Model):
+    image = models.ImageField(null=True, blank=True, upload_to='premium')
+    name= models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name_plural = "Premium Categories"
+    
+    def __str__(self):
+        return self.name
+
+class Premium(models.Model):
+    maintitle = models.CharField(max_length=50, default="premium header")
+    premium_headers = models.ForeignKey(PremiumTitles, related_name='premiumheaders', on_delete=models.CASCADE)
+    image = models.ImageField(null=True, blank=True, upload_to='premium')
+    body = RichTextField()
+
+    class Meta:
+        verbose_name_plural = "Premium Services"
+    
+    def __str__(self):
+        return self.maintitle

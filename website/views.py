@@ -8,7 +8,10 @@ from django.http import JsonResponse
 from django.core.paginator import Paginator
 from .forms import JobForm
 from django.http import HttpResponse
-from .models import Faq, FaqHeaders, Legal
+from .models import Faq, FaqHeaders, Legal, Premium, PremiumTitles, SubCategory
+from accounts.models import Profile
+from django.contrib.auth.decorators import login_required
+from .forms import SearchForm
 
 
 def index(request):
@@ -50,6 +53,14 @@ def legal_detail(request, legal_id):
     legals = get_object_or_404(Legal, id=legal_id)
     return render(request, 'website/legal_detail.html', {'legals': legals})
 
+def premium(request):
+    premiums = PremiumTitles.objects.all()
+    return render(request, 'website/premium.html', {'premiums': premiums})
+
+def premium_detail(request, premium_id):
+    premiums = get_object_or_404(Premium, id=premium_id)
+    return render(request, 'website/premium_detail.html', {'premiums': premiums})
+
 def categories_detail(request, categories_id):
     category = get_object_or_404(Category, id=categories_id)
     subcategories = category.subcategories.all()
@@ -71,3 +82,19 @@ def mpesa_callback(request):
         # Process callback data here
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'failure'})
+
+@login_required
+def profile(request):
+    return render(request, 'website/profile.html', {'user': request.user})
+
+
+def search_results(request):
+    form = SearchForm(request.GET or None)
+    query = request.GET.get('query', '')
+
+    if query:
+        results = SubCategory.objects.filter(name__icontains=query)  # Adjust the filter based on your model
+    else:
+        results = SubCategory.objects.none()
+
+    return render(request, 'website/search_results.html', {'form': form, 'results': results, 'query': query})

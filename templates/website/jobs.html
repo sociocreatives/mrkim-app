@@ -56,11 +56,6 @@
                     {% endif %}
                 </ul>
             </div>
-            <form action="{% url 'jobs' %}" method="POST">
-              {% csrf_token %}
-              <input id="autocomplete" class="autocomplete-input" type="text" name="location" placeholder="Enter a location">
-              <input type="submit" value="Submit">
-          </form>
 </section>
 
 {% endblock %}
